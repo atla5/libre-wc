@@ -1,0 +1,31 @@
+/* site header and footer */
+header, footer { 
+  color: white;
+  text-align: center;
+  background-color: black; 
+  padding: 10px;
+}
+header a, footer a { color: whitesmoke; }
+header a:hover, footer a:hover { font-weight: bold; }
+
+/* site banner */
+div.banner { 
+  background-color: #eee; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* main body styling */
+main { width: 100%; }
+main > section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ddd; 
+  border: 1px solid #aaa;
+}
+article { padding-left: 15px; padding-right: 15px; }
+
+/* sidebar */
+.sidebar {
+  display: flex;
+}

@@ -1,0 +1,21 @@
+/* create a box to group similar content, often for purposes of filtering or navigation */
+.secondary-menu {
+
+}
+
+/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+
+/* layout and responsiveness */
+.locoso-left { flex: 1; }
+.locoso-wrapper { display: flex; }
+
+/* list styles, */
+.locoso-left ul, .locoso-left ol { 
+  margin: 5px 0px; 
+  padding-left: 0; 
+  padding-bottom: 10px; 
+}
+
+/* padding and margins */
+.prm { margin-right: 10px; padding-right: 10px; }
+.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }
