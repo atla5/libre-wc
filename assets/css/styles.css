@@ -29,3 +29,17 @@ article { padding-left: 15px; padding-right: 15px; }
 .sidebar {
   display: flex;
 }
+
+/* buttons */
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #CC0000;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}

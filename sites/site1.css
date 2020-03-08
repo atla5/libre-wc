@@ -1,3 +1,23 @@
-body {
-  /* insert css variables exceptions here */
+/* demo purposes */
+header, footer { 
+  color: white;
+  background-color: blue; 
+  padding: 25px;
 }
+
+/* site banner */
+div.banner { 
+  background-color: lightblue; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* button */
+.btn {
+  padding: 20px;
+  background-color: #257abc;
+  color: white;
+}
+
+/* insert css variables exceptions here */
+body { }
