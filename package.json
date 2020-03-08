@@ -1,5 +1,5 @@
 {
-  "name": "citation-graph",
+  "name": "libre-wc",
   "description": "explore the incoming and outgoing citations for a given doi",
   "main": "src/index.js",
   "dependencies": {},
@@ -7,7 +7,8 @@
     "es-dev-server": "^1.40.0"
   },
   "scripts": {
-    "start": "es-dev-server --watch ./index.html"
+    "start": "es-dev-server --watch ./index.html",
+    "bundle:css": "scripts/bundle_css.sh"
   },
   "repository": {
     "type": "git",

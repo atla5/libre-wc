@@ -7,8 +7,8 @@ touch $CSS_BUNDLE_FILEPATH;
 cat assets/css/*.css >> $CSS_BUNDLE_FILEPATH;
 
 # copy site-specific css into dist/
-cp ./sites/libanswers/libanswers.css ./dist/libanswers.css
+cp ./sites/*.css ./dist/
 
 # move icons into dist/
-mkdir ./dist/icons || true;
-cp ./assets/icons/* ./dist/icons/
+mkdir ./dist/img || true;
+cp ./assets/img/* ./dist/img/

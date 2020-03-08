@@ -1,0 +1,257 @@
+/* create a tabbed pane */
+.tabs {
+  
+}/* helpers to make the styles show up better */
+#functional div { 
+  border: 1 solid black;
+}
+/* create a box to group similar content, often for purposes of filtering or navigation */
+.secondary-menu {
+
+}
+
+/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+
+/* layout and responsiveness */
+.locoso-left { flex: 1; }
+.locoso-wrapper { display: flex; }
+
+/* list styles, */
+.locoso-left ul, .locoso-left ol { 
+  margin: 5px 0px; 
+  padding-left: 0; 
+  padding-bottom: 10px; 
+}
+
+/* padding and margins */
+.prm { margin-right: 10px; padding-right: 10px; }
+.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
+header, footer { 
+  color: white;
+  text-align: center;
+  background-color: black; 
+  padding: 10px;
+}
+header a, footer a { color: whitesmoke; }
+header a:hover, footer a:hover { font-weight: bold; }
+
+/* site banner */
+div.banner { 
+  background-color: #eee; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* main body styling */
+main { width: 100%; }
+main > section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ddd; 
+  border: 1px solid #aaa;
+}
+article { padding-left: 15px; padding-right: 15px; }
+
+/* sidebar */
+.sidebar {
+  display: flex;
+}html {
+  /* colors */
+
+  /* padding */
+  --padding-small: 5px;
+  --padding-medium: 10px;
+  --padding-large: 15px;
+}/* create a tabbed pane */
+.tabs {
+  
+}/* helpers to make the styles show up better */
+#functional div { 
+  border: 1 solid black;
+}
+/* create a box to group similar content, often for purposes of filtering or navigation */
+.secondary-menu {
+
+}
+
+/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+
+/* layout and responsiveness */
+.locoso-left { flex: 1; }
+.locoso-wrapper { display: flex; }
+
+/* list styles, */
+.locoso-left ul, .locoso-left ol { 
+  margin: 5px 0px; 
+  padding-left: 0; 
+  padding-bottom: 10px; 
+}
+
+/* padding and margins */
+.prm { margin-right: 10px; padding-right: 10px; }
+.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
+header, footer { 
+  color: white;
+  text-align: center;
+  background-color: black; 
+  padding: 10px;
+}
+header a, footer a { color: whitesmoke; }
+header a:hover, footer a:hover { font-weight: bold; }
+
+/* site banner */
+div.banner { 
+  background-color: #eee; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* main body styling */
+main { width: 100%; }
+main > section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ddd; 
+  border: 1px solid #aaa;
+}
+article { padding-left: 15px; padding-right: 15px; }
+
+/* sidebar */
+.sidebar {
+  display: flex;
+}html {
+  /* colors */
+
+  /* padding */
+  --padding-small: 5px;
+  --padding-medium: 10px;
+  --padding-large: 15px;
+}/* create a tabbed pane */
+.tabs {
+  
+}/* helpers to make the styles show up better */
+#functional div { 
+  border: 1 solid black;
+}
+/* create a box to group similar content, often for purposes of filtering or navigation */
+.secondary-menu {
+
+}
+
+/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+
+/* layout and responsiveness */
+.locoso-left { flex: 1; }
+.locoso-wrapper { display: flex; }
+
+/* list styles, */
+.locoso-left ul, .locoso-left ol { 
+  margin: 5px 0px; 
+  padding-left: 0; 
+  padding-bottom: 10px; 
+}
+
+/* padding and margins */
+.prm { margin-right: 10px; padding-right: 10px; }
+.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
+header, footer { 
+  color: white;
+  text-align: center;
+  background-color: black; 
+  padding: 10px;
+}
+header a, footer a { color: whitesmoke; }
+header a:hover, footer a:hover { font-weight: bold; }
+
+/* site banner */
+div.banner { 
+  background-color: #eee; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* main body styling */
+main { width: 100%; }
+main > section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ddd; 
+  border: 1px solid #aaa;
+}
+article { padding-left: 15px; padding-right: 15px; }
+
+/* sidebar */
+.sidebar {
+  display: flex;
+}html {
+  /* colors */
+
+  /* padding */
+  --padding-small: 5px;
+  --padding-medium: 10px;
+  --padding-large: 15px;
+}/* create a tabbed pane */
+.tabs {
+  
+}/* helpers to make the styles show up better */
+#functional div { 
+  border: 1 solid black;
+}
+/* create a box to group similar content, often for purposes of filtering or navigation */
+.secondary-menu {
+
+}
+
+/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+
+/* layout and responsiveness */
+.locoso-left { flex: 1; }
+.locoso-wrapper { display: flex; }
+
+/* list styles, */
+.locoso-left ul, .locoso-left ol { 
+  margin: 5px 0px; 
+  padding-left: 0; 
+  padding-bottom: 10px; 
+}
+
+/* padding and margins */
+.prm { margin-right: 10px; padding-right: 10px; }
+.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
+header, footer { 
+  color: white;
+  text-align: center;
+  background-color: black; 
+  padding: 10px;
+}
+header a, footer a { color: whitesmoke; }
+header a:hover, footer a:hover { font-weight: bold; }
+
+/* site banner */
+div.banner { 
+  background-color: #eee; 
+  text-align: center; 
+  padding: 10px;
+}
+
+/* main body styling */
+main { width: 100%; }
+main > section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ddd; 
+  border: 1px solid #aaa;
+}
+article { padding-left: 15px; padding-right: 15px; }
+
+/* sidebar */
+.sidebar {
+  display: flex;
+}html {
+  /* colors */
+
+  /* padding */
+  --padding-small: 5px;
+  --padding-medium: 10px;
+  --padding-large: 15px;
+}
