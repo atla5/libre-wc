@@ -9,20 +9,8 @@
 
   <title>JS - Multi-Site Management - Code4Lib 2020</title>
   <link rel="icon" href="https://journal.code4lib.org/wp-content/themes/c4lj-theme/images/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="./sites/site2.css">
   <link rel="stylesheet" type="text/css" href="./dist/bundle.css">
-  <script type="text/javascript" src="./src/lit_html.js"></script>
-  <script>
-    // generic helper function used to grab the data 
-    function getDataFromJSONFileAndCallRenderFunction(data_url, renderFunction) {
-      return fetch(data_url)
-        .then((resp) => resp.json())
-        .then((json) => renderFunction(json))
-        .catch((error) => console.log(error))
-      ;
-    }
-  </script>
+  <link rel="stylesheet" type="text/css" href="./sites/site2.css">
 </head>
 
 <body>
@@ -44,32 +32,107 @@
         <div class="bordered">
           <p class="bigger-text">you have javascript turned off!</p>
           <p><strong>much of this page requires javascript to run. :(</strong></p>
-          <p><em>
-            please update your permissions and make sure to remember to add 
-            <code>noscript</code> tags to your pages/templates
-          </em></p>
+          <p>
+            <em>
+              please update your permissions and make sure to remember to add 
+              <code>noscript</code> tags to your pages/templates
+            </em>
+          </p>
         </div>
       </noscript>
       <section id="helpers">
         <h2>helpers</h2>
-        <p><em>these are able to be used as one-offs, and add functionality</em></p>
-        <script></script>
+        <p><em>these are able to be used as one-offs, and add functionality in small pieces</em></p>
+        
+        <h3>Example: BU Libraries - Google <a href="https://bulib.github.io/bulib-wc/?path=/docs/js-helpers-analytics-tracking--page">Analytics Helper</a></h3>
+        <p><em>this helper will log when you click on one of the nav links, but it's hard to see visually</em></p>
+        <p>use 'Inspect Element' on the <code>&lt;script&gt;</code> tag below</p>
+        <script type="module">
+          // import the '@latest' version of our particular helper from the CDN
+          import {addSendGAEventOnAnchorClickToAnchorElements} from "https://unpkg.com/bulib-wc@latest/src/_helpers/google_analytix.js?module";
+
+          // collect and apply listeners to 'home, css, js' links
+          let category = "libre-wc"; let action = "navigation-clicked";
+          let navLinks = document.querySelectorAll("main > section.secondary-menu a");
+          addSendGAEventOnAnchorClickToAnchorElements(navLinks, category, action);
+        </script>
+
+        <h3>Example: BU Libraries - Browser Compatability Helper</h3>
+        <h4><code>loadWebComponentInto</code></h4>
+        <p>replace the fallback on a given page with a web component</p>
+        <p><em>NOTE: this is being used in a couple places on this page, if you spot them</em></p>
+        <script type="module">
+          // import helper from the CDN
+          import {loadWebComponentInto} from './src/browser_compatability.js';
+        
+          /* - replace assorted components on this page for the cards, hours, and footer - */
+          loadWebComponentInto("libre-card", [ document.getElementById("nowc-card") ]);
+          loadWebComponentInto("bulib-hours", [ document.getElementById("nowc-hours") ]);
+          loadWebComponentInto("bulib-footer", [ document.getElementById("nowc-footer") ]);
+        </script>
       </section>
+
       <section id="templates">
         <h2>templates</h2>
-        <div id="locoso">loading...</div>
-
+        <p>load a bunch of formatted <code>html</code> into a particular template using 
+          the <code>lit-html</code> library and a bit of <code>json</code> in <code>assets/data</code>
+        </p>
+        <script type="module" async defer src="./src/load_template.js"></script>
+        <div id="locoso">loading...<noscript>also another fallback ;)</noscript></div>
       </section>
+
       <section id="web-components">
         <h2>Web Components</h2>
 
         <section id="shortcodes">
           <h3>as shortcodes</h3>
+          <p><em>use a web component to simplify the markup to be more declarative</em></p>
+
+          <p>
+            you can use these instead of having to remember all of the markup for one of your 
+            <code>html+css</code>, or 'no-javascript' components. 
+          </p>
+          <p><em>just make sure that js is enabled and you have a fallback!</em></p>
+          
+          <h4>Card</h4>
+          <script type="module" src="./src/libre_card.js"></script>
+          <libre-card title="Email" icon="email" link="https://askalibrarian.bu.edu/form.php?quid=511" 
+            description="Email us your research questions and we’ll respond within 24 hours.">
+          </libre-card>
+
+          <div id="nowc-card" class="bordered">
+            <strong>fallback for libre-card:</strong>
+            <a href="mailto:ask@bu.edu">Email Us</a> for help (<code>libre-card</code> fallback)
+          </div>
         </section>
 
-        <section id="">
-          <h3>as </h3>
-          
+        <section id="api-fragment">
+          <h3>As API Fragments</h3>
+          <p><em>create a component to call an API (with a given property) and display the results</em></p>
+
+          <h4>BU Libraries - Library <a href="https://bulib.github.io/bulib-wc/?path=/docs/web-components-bulib-hours--default-story">Hours Component</a></h4>
+          <p>Grab the hours from LibCal and display them with a link</p>
+          <div id="nowc-hours">
+            see the hours for the Science and Engineering Library and others at 
+            <a href="https://www.bu.edu/library/about/hours/">library hours</a>
+          </div>
+          <bulib-hours library="sel" long></bulib-hours>
+        </section>
+
+        <section id="legos">
+          <h3>as composable <a href="https://www.lego.com/en-us">lego (TM)</a> pieces</h3>
+          <p>
+            web components can be used <em>inside</em> other web components. 
+            the following is a web component that contains two others! 
+          </p>
+
+          <script type="module" src="https://unpkg.com/bulib-wc@latest/src/index.js?module"></script>
+          <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulib-wc@latest/dist/bundle.min.css">
+
+          <bulib-footer curr_url="https://www.bu.edu/library/management/"></bulib-footer>
+          <div id="nowc-footer" style="background-color: var(--color-primary-background); color: var(--color-primary-text);">
+            this is a fallback footer
+          </div>
         </section>
       </section>
     </article>

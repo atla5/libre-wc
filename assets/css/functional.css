@@ -22,6 +22,7 @@
 /* padding examples */
 .pal { padding: 15px; }
 .pbm { padding-bottom: 10px; }
+.pln { padding-left: 0px; }
 .mls { margin-left: 5px; }
 
 /* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
@@ -36,3 +37,4 @@
   white-space: nowrap; /* added line */
   border: 0;
 }
+

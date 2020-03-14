@@ -52,9 +52,9 @@ html {
 }
 
 /* demonstrating variables can be overwritten, even with less specificity */
+.variable-override { --color-accent-background: green; }
 #var-ex-3 {
   background-color: var(--color-accent-background);
   color: var(--color-accent-text);
 }
 
-.variable-override { --color-accent-background: green; }
