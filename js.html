@@ -11,6 +11,7 @@
   <link rel="icon" href="https://journal.code4lib.org/wp-content/themes/c4lj-theme/images/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
   <link rel="stylesheet" type="text/css" href="./sites/site2.css">
+  <link rel="stylesheet" type="text/css" href="./dist/bundle.css">
   <script type="text/javascript" src="./src/lit_html.js"></script>
   <script>
     // generic helper function used to grab the data 
@@ -31,7 +32,7 @@
   </header>
   <div class="banner">A Modular Strategy for Creating (and Maintaining) Consistency Across Platforms</div>
   <main>
-    <section id="sidebar">
+    <section class="secondary-menu">
       <ul>
         <li><a class="btn" href="/index.html">home</a></li>
         <li><a class="btn" href="/css.html">css</a></li>
@@ -39,26 +40,44 @@
       </ul>
     </section>
     <article>
+      <noscript>
+        <div class="bordered">
+          <p class="bigger-text">you have javascript turned off!</p>
+          <p><strong>much of this page requires javascript to run. :(</strong></p>
+          <p><em>
+            please update your permissions and make sure to remember to add 
+            <code>noscript</code> tags to your pages/templates
+          </em></p>
+        </div>
+      </noscript>
       <section id="helpers">
         <h2>helpers</h2>
-        
+        <p><em>these are able to be used as one-offs, and add functionality</em></p>
+        <script></script>
       </section>
       <section id="templates">
         <h2>templates</h2>
+        <div id="locoso">loading...</div>
 
       </section>
       <section id="web-components">
-        <h2>object-oriented css</h2>
+        <h2>Web Components</h2>
 
         <section id="shortcodes">
           <h3>as shortcodes</h3>
-          <div id="locoso">loading...</div>
         </section>
 
-        <section id=""></section>
+        <section id="">
+          <h3>as </h3>
+          
+        </section>
       </section>
     </article>
   </main>
+  <div class="sub-footer">
+    based off of <a href="https://github.com/bulib/bulib-wc">bulib-wc</a> by 
+    <a href="https://bu.edu/library">BU Libraries</a>
+  </div>
   <footer>Code4Lib 2020 - Aidan Sawyer - <a href="https://github.com/atla5">@atla5</a></footer>
 </body>
 

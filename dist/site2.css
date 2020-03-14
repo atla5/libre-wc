@@ -1,3 +1,15 @@
-body {
-  /* insert css variables exceptions here */
+/* -- SITE 2: site-specific alterations to the default branding -- */
+
+/* known exceptions to the 'variables.css' */
+body { 
+  --color-primary-background: darkgreen;
+
+  --color-secondary-background: palegreen;
+  --color-secondary-text: darkgreen;
+  --color-secondary-background-light: lightgreen; 
+  --color-secondary-background-dark: forestgreen;
+  
+  --color-button-background: green;
+  --color-button-background-dark: darkgreen;
+  --color-button-text: white;
 }

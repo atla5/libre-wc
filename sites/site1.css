@@ -1,23 +1,12 @@
-/* demo purposes */
-header, footer { 
-  color: white;
-  background-color: blue; 
-  padding: 25px;
-}
+/* -- SITE 1: site-specific alterations to the default branding -- */
 
-/* site banner */
-div.banner { 
-  background-color: lightblue; 
-  text-align: center; 
-  padding: 10px;
-}
+/* known exceptions to the 'variables.css' */
+body { 
+  --color-primary-background: midnightblue;
 
-/* button */
-.btn {
-  padding: 20px;
-  background-color: #257abc;
-  color: white;
+  --color-secondary-background: lightblue;
+  --color-secondary-background-light: aliceblue; 
+  --color-secondary-background-dark: darkblue;
+  
+  --color-button-background: skyblue;
 }
-
-/* insert css variables exceptions here */
-body { }

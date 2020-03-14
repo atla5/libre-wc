@@ -1,43 +1,208 @@
-/* create a tabbed pane */
-.tabs {
+/* -- COMPONENTIZED CSS -- */
+
+/* - tabs.css: shout out to [kyusuf](https://github.com/KenanYusuf/) for his [tutorial](https://kyusuf.com/post/completely-css-tabs/) - */
+
+/* show/hide content based on currently selected input */
+div.tabs {
+  box-sizing: border-box;
+  display: flex; 
+  flex-wrap: wrap;
+  background-color: var(--color-secondary-background, gainsboro); 
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary-background-dark, #ccc);
+}
+
+/* hide radio buttons */
+div.tabs > input { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* tab header label */
+div.tabs > label { 
+  cursor: pointer;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 100%; 
+}
+div.tabs > input:focus + label, div.tabs > input + label:focus { text-decoration: underline; }
+div.tabs > input:hover + label, div.tabs > input + label:hover { background-color: var(--color-secondary-background-light, #ccc); }
+div.tabs > input:checked + label {
+  background-color: var(--color-secondary-background-light, #ccc);
+  font-weight: bold;
+}
+
+/* adjust border presence and radius for top/bottom tabs on small screens */
+div.tabs > input:checked + label {
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  border-left: none; border-right: none;
+}
+div.tabs > input + label:last-of-type { 
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input + label:first-of-type { 
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+}
+div.tabs > input:first-child:checked + label { 
+  border-top: none;
+  border-left: none;
+}
+
+/* respond to keyboard focus */
+div.tabs a:focus { font-weight: bold; text-decoration: underline; }
+
+
+/* tab content */
+div.tabs > div { 
+  padding: 10px;
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  display: none; 
+  width: 100%;
+}
+div.tabs > div:last-of-type { 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input:checked + label + div { 
+  background-color: var(--color-secondary-background-light, white) !important;
+  display: block; 
+}
+
+/* responsiveness (for large screens) */ 
+@media only screen and (min-width: 375px) {
   
-}/* helpers to make the styles show up better */
-#functional div { 
-  border: 1 solid black;
+  /* show the tab content body underneath the tab headers*/
+  div.tabs > div { 
+    order: 99; 
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  /* adjust tab labels to display horizontally */
+  div.tabs > label  { width: auto; }
+  div.tabs > input:checked + label {
+    border-left: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-right: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-top: none;
+    border-bottom: none;
+  }
+  div.tabs > input + label:first-of-type { border-top-right-radius: 0px; }
+  div.tabs > input + label:last-of-type { 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px;
+  }
 }
-/* create a box to group similar content, often for purposes of filtering or navigation */
-.secondary-menu {
 
-}
-
-/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+/* - LOcation, COntact, SOcial (.locoso) styling - */
 
 /* layout and responsiveness */
-.locoso-left { flex: 1; }
-.locoso-wrapper { display: flex; }
+.locoso { 
+  display: flex; 
+  flex-wrap: wrap;
+  width: 100%; 
+  justify-content: space-around; }
+.locoso > div:first { flex: 1; }
+.locoso img {
+  height: 30px; width: 30px;
+}/* -- FUNCTIONAL CSS: does the same thing regardless of tag -- */
 
-/* list styles, */
-.locoso-left ul, .locoso-left ol { 
-  margin: 5px 0px; 
-  padding-left: 0; 
-  padding-bottom: 10px; 
+/* helpers to make the styles show up better */
+#functional div { border: 1px solid black; }
+
+/* add a basic border to anything */
+.bordered { border: 1px solid var(--color-secondary-background-dark, darkgrey); }
+
+/* text-alignment */
+.txtl { text-align: left; }
+.txtc { text-align: center; }
+.txtr { text-align: right; }
+
+/* flex-wrapped */
+.flexw { display: flex; flex-wrap: wrap; }
+
+/* make text bigger */
+.large-text, .big-text { font-size: large; }
+.larger-text, .bigger-text { font-size: x-large; }
+
+/* padding examples */
+.pal { padding: 15px; }
+.pbm { padding-bottom: 10px; }
+.mls { margin-left: 5px; }
+
+/* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}/** -- OBJECT-ORIENTED CSS: styles/classes that are built for specific tags/situations -- */
+
+/* - buttons - */
+
+/* button styling (with css-variable usage) tied to an 'a' or 'button' tag */
+a.btn, button.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: var(--color-button-background-dark, blue);
+  color: var(--color-button-text, white);
+  border: 2px solid var(--color-button-text, white);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+a.btn:hover, button.btn:hover { 
+  background-color: var(--color-button-background-dark, darkblue);
+  cursor: pointer;
+}
+a.btn.btn-secondary, button.btn.btn-secondary { 
+  color: var(--color-button-background-dark, darkblue); 
+  background-color: var(--color-button-text, white);
+  border-color: var(--color-button-background-dark);
 }
 
-/* padding and margins */
-.prm { margin-right: 10px; padding-right: 10px; }
-.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
-header, footer { 
-  color: white;
-  text-align: center;
-  background-color: black; 
+
+/* - Secondary Menu:  accentuates/groups a block of content - */
+
+/* .secondary-menu styling tied to a 'div' or 'section' */
+div.secondary-menu, section.secondary-menu {
+  background-color: var(--color-secondary-background-light, gainsboro);
+  border: 1px solid var(--color-secondary-background-dark, grey);
   padding: 10px;
 }
-header a, footer a { color: whitesmoke; }
-header a:hover, footer a:hover { font-weight: bold; }
+
+/* - List Helpers - */
+
+/* lists without bullets and the default spacing */
+ul.inline-list, ol.inline-list { display: inline; padding-right: 5px;} 
+ul.no-bullet > li, ol.no-bullet > li { list-style:none !important; padding-left: 0em; }
+/* -- GENERIC STYLES that highlight core aspects of the page -- */
+
+/* site header and footer */
+header, footer { 
+  background-color: var(--color-primary-background, black); 
+  color: var(--color-primary-text, white);
+  text-align: center;
+  padding: 10px;
+}
+header a, footer a { color: var(--color-primary-text, whitesmoke); }
+header a:hover, footer a:hover { color: var(--color-primary-text-light, white); font-weight: bold; }
 
 /* site banner */
-div.banner { 
-  background-color: #eee; 
+div.banner { margin-bottom: 10px; }
+div.sub-footer { margin-top: 10px; }
+div.banner, div.sub-footer { 
+  background-color: var(--color-secondary-background, #eee); 
+  color: var(--color-secondary-text, black);
+  border: 1px solid var(--color-secondary-background-dark, darkgrey);
   text-align: center; 
   padding: 10px;
 }
@@ -53,55 +218,281 @@ main > section {
 article { padding-left: 15px; padding-right: 15px; }
 
 /* sidebar */
-.sidebar {
-  display: flex;
-}html {
-  /* colors */
+.sidebar { display: flex; }
 
-  /* padding */
+/* prevent a list from having bulleted styling */
+.secondary-menu > ul, ul.no-bullet { list-style: none; }
+.secondary-menu > ul li, .secondary-menu > ol li { margin-left: 5px; margin-right: 5px; }
+.secondary-menu > ul { 
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+}
+/* -- CSS VARIABLES: set accessible variables that are accessible (and able to be overwritten) within their scope -- */
+
+
+/* - colors (for branding) - */
+html {
+  /* primary background (black-ish) */
+  --color-primary-background: #2D2926;
+  --color-primary-background-light: rgb(74, 71, 70);
+  --color-primary-background-dark: black;
+  --color-primary-text: #e1e1e1;
+  --color-primary-text-light: white;
+
+  /* red accent background */
+  --color-accent-background: #CC0000;
+  --color-accent-text: #eee;
+  --color-accent-text-hover: #fff;
+
+  /* button/call to action (blue) */
+  --color-button-background: #257abe;
+  --color-button-background-dark: #1B598C;
+  --color-button-text: whitesmoke;
+
+  /* secondary background color (very light grey) */
+  --color-secondary-background: #eeeeee;
+  --color-secondary-background-light: #f5f5f5;
+  --color-secondary-background-dark: #C8C8C8;
+  --color-secondary-text: #333333;
+  --color-secondary-text-dark: black;
+}
+
+/* - padding: used throughout - */
+html {
   --padding-small: 5px;
   --padding-medium: 10px;
   --padding-large: 15px;
-}/* create a tabbed pane */
-.tabs {
+  --padding-xlarge: 20px;
+  --padding-xxlarge: 25px;
+}
+
+/* - hardcoded examples for the demonstration page - */
+
+/* demonstrating the variables working as normal, without any fallbacks */
+#var-ex-1 {
+  background-color: var(--color-accent-background); 
+  color: var(--color-accent-text);
+}
+
+/* demonstrating the fallbacks, if there's an error in scope or in misspelling */
+#var-ex-2 {
+  background-color: var(--color-acccent-background, darkgrey);
+  color: var(--color-acccent-text, black);
+}
+
+/* demonstrating variables can be overwritten, even with less specificity */
+#var-ex-3 {
+  background-color: var(--color-accent-background);
+  color: var(--color-accent-text);
+}
+
+.variable-override { --color-accent-background: green; }/* -- COMPONENTIZED CSS -- */
+
+/* - tabs.css: shout out to [kyusuf](https://github.com/KenanYusuf/) for his [tutorial](https://kyusuf.com/post/completely-css-tabs/) - */
+
+/* show/hide content based on currently selected input */
+div.tabs {
+  box-sizing: border-box;
+  display: flex; 
+  flex-wrap: wrap;
+  background-color: var(--color-secondary-background, gainsboro); 
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary-background-dark, #ccc);
+}
+
+/* hide radio buttons */
+div.tabs > input { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* tab header label */
+div.tabs > label { 
+  cursor: pointer;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 100%; 
+}
+div.tabs > input:focus + label, div.tabs > input + label:focus { text-decoration: underline; }
+div.tabs > input:hover + label, div.tabs > input + label:hover { background-color: var(--color-secondary-background-light, #ccc); }
+div.tabs > input:checked + label {
+  background-color: var(--color-secondary-background-light, #ccc);
+  font-weight: bold;
+}
+
+/* adjust border presence and radius for top/bottom tabs on small screens */
+div.tabs > input:checked + label {
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  border-left: none; border-right: none;
+}
+div.tabs > input + label:last-of-type { 
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input + label:first-of-type { 
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+}
+div.tabs > input:first-child:checked + label { 
+  border-top: none;
+  border-left: none;
+}
+
+/* respond to keyboard focus */
+div.tabs a:focus { font-weight: bold; text-decoration: underline; }
+
+
+/* tab content */
+div.tabs > div { 
+  padding: 10px;
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  display: none; 
+  width: 100%;
+}
+div.tabs > div:last-of-type { 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input:checked + label + div { 
+  background-color: var(--color-secondary-background-light, white) !important;
+  display: block; 
+}
+
+/* responsiveness (for large screens) */ 
+@media only screen and (min-width: 375px) {
   
-}/* helpers to make the styles show up better */
-#functional div { 
-  border: 1 solid black;
+  /* show the tab content body underneath the tab headers*/
+  div.tabs > div { 
+    order: 99; 
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  /* adjust tab labels to display horizontally */
+  div.tabs > label  { width: auto; }
+  div.tabs > input:checked + label {
+    border-left: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-right: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-top: none;
+    border-bottom: none;
+  }
+  div.tabs > input + label:first-of-type { border-top-right-radius: 0px; }
+  div.tabs > input + label:last-of-type { 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px;
+  }
 }
-/* create a box to group similar content, often for purposes of filtering or navigation */
-.secondary-menu {
 
-}
-
-/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+/* - LOcation, COntact, SOcial (.locoso) styling - */
 
 /* layout and responsiveness */
-.locoso-left { flex: 1; }
-.locoso-wrapper { display: flex; }
+.locoso { 
+  display: flex; 
+  flex-wrap: wrap;
+  width: 100%; 
+  justify-content: space-around; }
+.locoso > div:first { flex: 1; }
+.locoso img {
+  height: 30px; width: 30px;
+}/* -- FUNCTIONAL CSS: does the same thing regardless of tag -- */
 
-/* list styles, */
-.locoso-left ul, .locoso-left ol { 
-  margin: 5px 0px; 
-  padding-left: 0; 
-  padding-bottom: 10px; 
+/* helpers to make the styles show up better */
+#functional div { border: 1px solid black; }
+
+/* add a basic border to anything */
+.bordered { border: 1px solid var(--color-secondary-background-dark, darkgrey); }
+
+/* text-alignment */
+.txtl { text-align: left; }
+.txtc { text-align: center; }
+.txtr { text-align: right; }
+
+/* display shortcuts */
+.flexw { display: flex; flex-wrap: wrap; }
+.full-width { width: 100%; }
+
+/* make text bigger */
+.large-text, .big-text { font-size: large; }
+.larger-text, .bigger-text { font-size: x-large; }
+
+/* padding examples */
+.pal { padding: 15px; }
+.pbm { padding-bottom: 10px; }
+.mls { margin-left: 5px; }
+
+/* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}/** -- OBJECT-ORIENTED CSS: styles/classes that are built for specific tags/situations -- */
+
+/* - buttons - */
+
+/* button styling (with css-variable usage) tied to an 'a' or 'button' tag */
+a.btn, button.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: var(--color-button-background-dark, blue);
+  color: var(--color-button-text, white);
+  border: 2px solid var(--color-button-text, white);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+a.btn:hover, button.btn:hover { 
+  background-color: var(--color-button-background-dark, darkblue);
+  cursor: pointer;
+}
+a.btn.btn-secondary, button.btn.btn-secondary { 
+  color: var(--color-button-background-dark, darkblue); 
+  background-color: var(--color-button-text, white);
+  border-color: var(--color-button-background-dark);
 }
 
-/* padding and margins */
-.prm { margin-right: 10px; padding-right: 10px; }
-.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
-header, footer { 
-  color: white;
-  text-align: center;
-  background-color: black; 
+
+/* - Secondary Menu:  accentuates/groups a block of content - */
+
+/* .secondary-menu styling tied to a 'div' or 'section' */
+div.secondary-menu, section.secondary-menu {
+  background-color: var(--color-secondary-background-light, gainsboro);
+  border: 1px solid var(--color-secondary-background-dark, grey);
   padding: 10px;
 }
-header a, footer a { color: whitesmoke; }
-header a:hover, footer a:hover { font-weight: bold; }
+
+/* - List Helpers - */
+
+/* lists without bullets and the default spacing */
+ul.inline-list, ol.inline-list { display: inline; padding-right: 5px;} 
+ul.no-bullet > li, ol.no-bullet > li { list-style:none !important; padding-left: 0em; }
+/* -- GENERIC STYLES that highlight core aspects of the page -- */
+
+/* site header and footer */
+header, footer { 
+  background-color: var(--color-primary-background, black); 
+  color: var(--color-primary-text, white);
+  text-align: center;
+  padding: 10px;
+}
+header a, footer a { color: var(--color-primary-text, whitesmoke); }
+header a:hover, footer a:hover { color: var(--color-primary-text-light, white); font-weight: bold; }
 
 /* site banner */
-div.banner { 
-  background-color: #eee; 
+div.banner { margin-bottom: 10px; }
+div.sub-footer { margin-top: 10px; }
+div.banner, div.sub-footer { 
+  background-color: var(--color-secondary-background, #eee); 
+  color: var(--color-secondary-text, black);
+  border: 1px solid var(--color-secondary-background-dark, darkgrey);
   text-align: center; 
   padding: 10px;
 }
@@ -117,55 +508,281 @@ main > section {
 article { padding-left: 15px; padding-right: 15px; }
 
 /* sidebar */
-.sidebar {
-  display: flex;
-}html {
-  /* colors */
+.sidebar { display: flex; }
 
-  /* padding */
+/* prevent a list from having bulleted styling */
+.secondary-menu > ul, ul.no-bullet { list-style: none; }
+.secondary-menu > ul li, .secondary-menu > ol li { margin-left: 5px; margin-right: 5px; }
+.secondary-menu > ul { 
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+}
+/* -- CSS VARIABLES: set accessible variables that are accessible (and able to be overwritten) within their scope -- */
+
+
+/* - colors (for branding) - */
+html {
+  /* primary background (black-ish) */
+  --color-primary-background: #2D2926;
+  --color-primary-background-light: rgb(74, 71, 70);
+  --color-primary-background-dark: black;
+  --color-primary-text: #e1e1e1;
+  --color-primary-text-light: white;
+
+  /* red accent background */
+  --color-accent-background: #CC0000;
+  --color-accent-text: #eee;
+  --color-accent-text-hover: #fff;
+
+  /* button/call to action (blue) */
+  --color-button-background: #257abe;
+  --color-button-background-dark: #1B598C;
+  --color-button-text: whitesmoke;
+
+  /* secondary background color (very light grey) */
+  --color-secondary-background: #eeeeee;
+  --color-secondary-background-light: #f5f5f5;
+  --color-secondary-background-dark: #C8C8C8;
+  --color-secondary-text: #333333;
+  --color-secondary-text-dark: black;
+}
+
+/* - padding: used throughout - */
+html {
   --padding-small: 5px;
   --padding-medium: 10px;
   --padding-large: 15px;
-}/* create a tabbed pane */
-.tabs {
+  --padding-xlarge: 20px;
+  --padding-xxlarge: 25px;
+}
+
+/* - hardcoded examples for the demonstration page - */
+
+/* demonstrating the variables working as normal, without any fallbacks */
+#var-ex-1 {
+  background-color: var(--color-accent-background); 
+  color: var(--color-accent-text);
+}
+
+/* demonstrating the fallbacks, if there's an error in scope or in misspelling */
+#var-ex-2 {
+  background-color: var(--color-acccent-background, darkgrey);
+  color: var(--color-acccent-text, black);
+}
+
+/* demonstrating variables can be overwritten, even with less specificity */
+#var-ex-3 {
+  background-color: var(--color-accent-background);
+  color: var(--color-accent-text);
+}
+
+.variable-override { --color-accent-background: green; }/* -- COMPONENTIZED CSS -- */
+
+/* - tabs.css: shout out to [kyusuf](https://github.com/KenanYusuf/) for his [tutorial](https://kyusuf.com/post/completely-css-tabs/) - */
+
+/* show/hide content based on currently selected input */
+div.tabs {
+  box-sizing: border-box;
+  display: flex; 
+  flex-wrap: wrap;
+  background-color: var(--color-secondary-background, gainsboro); 
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary-background-dark, #ccc);
+}
+
+/* hide radio buttons */
+div.tabs > input { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* tab header label */
+div.tabs > label { 
+  cursor: pointer;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 100%; 
+}
+div.tabs > input:focus + label, div.tabs > input + label:focus { text-decoration: underline; }
+div.tabs > input:hover + label, div.tabs > input + label:hover { background-color: var(--color-secondary-background-light, #ccc); }
+div.tabs > input:checked + label {
+  background-color: var(--color-secondary-background-light, #ccc);
+  font-weight: bold;
+}
+
+/* adjust border presence and radius for top/bottom tabs on small screens */
+div.tabs > input:checked + label {
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  border-left: none; border-right: none;
+}
+div.tabs > input + label:last-of-type { 
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input + label:first-of-type { 
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+}
+div.tabs > input:first-child:checked + label { 
+  border-top: none;
+  border-left: none;
+}
+
+/* respond to keyboard focus */
+div.tabs a:focus { font-weight: bold; text-decoration: underline; }
+
+
+/* tab content */
+div.tabs > div { 
+  padding: 10px;
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  display: none; 
+  width: 100%;
+}
+div.tabs > div:last-of-type { 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input:checked + label + div { 
+  background-color: var(--color-secondary-background-light, white) !important;
+  display: block; 
+}
+
+/* responsiveness (for large screens) */ 
+@media only screen and (min-width: 375px) {
   
-}/* helpers to make the styles show up better */
-#functional div { 
-  border: 1 solid black;
+  /* show the tab content body underneath the tab headers*/
+  div.tabs > div { 
+    order: 99; 
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  /* adjust tab labels to display horizontally */
+  div.tabs > label  { width: auto; }
+  div.tabs > input:checked + label {
+    border-left: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-right: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-top: none;
+    border-bottom: none;
+  }
+  div.tabs > input + label:first-of-type { border-top-right-radius: 0px; }
+  div.tabs > input + label:last-of-type { 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px;
+  }
 }
-/* create a box to group similar content, often for purposes of filtering or navigation */
-.secondary-menu {
 
-}
-
-/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+/* - LOcation, COntact, SOcial (.locoso) styling - */
 
 /* layout and responsiveness */
-.locoso-left { flex: 1; }
-.locoso-wrapper { display: flex; }
+.locoso { 
+  display: flex; 
+  flex-wrap: wrap;
+  width: 100%; 
+  justify-content: space-around; }
+.locoso > div:first { flex: 1; }
+.locoso img {
+  height: 30px; width: 30px;
+}/* -- FUNCTIONAL CSS: does the same thing regardless of tag -- */
 
-/* list styles, */
-.locoso-left ul, .locoso-left ol { 
-  margin: 5px 0px; 
-  padding-left: 0; 
-  padding-bottom: 10px; 
+/* helpers to make the styles show up better */
+#functional div { border: 1px solid black; }
+
+/* add a basic border to anything */
+.bordered { border: 1px solid var(--color-secondary-background-dark, darkgrey); }
+
+/* text-alignment */
+.txtl { text-align: left; }
+.txtc { text-align: center; }
+.txtr { text-align: right; }
+
+/* display shortcuts */
+.flexw { display: flex; flex-wrap: wrap; }
+.full-width { width: 100%; }
+
+/* make text bigger */
+.large-text, .big-text { font-size: large; }
+.larger-text, .bigger-text { font-size: x-large; }
+
+/* padding examples */
+.pal { padding: 15px; }
+.pbm { padding-bottom: 10px; }
+.mls { margin-left: 5px; }
+
+/* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}/** -- OBJECT-ORIENTED CSS: styles/classes that are built for specific tags/situations -- */
+
+/* - buttons - */
+
+/* button styling (with css-variable usage) tied to an 'a' or 'button' tag */
+a.btn, button.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: var(--color-button-background-dark, blue);
+  color: var(--color-button-text, white);
+  border: 2px solid var(--color-button-text, white);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+a.btn:hover, button.btn:hover { 
+  background-color: var(--color-button-background-dark, darkblue);
+  cursor: pointer;
+}
+a.btn.btn-secondary, button.btn.btn-secondary { 
+  color: var(--color-button-background-dark, darkblue); 
+  background-color: var(--color-button-text, white);
+  border-color: var(--color-button-background-dark);
 }
 
-/* padding and margins */
-.prm { margin-right: 10px; padding-right: 10px; }
-.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
-header, footer { 
-  color: white;
-  text-align: center;
-  background-color: black; 
+
+/* - Secondary Menu:  accentuates/groups a block of content - */
+
+/* .secondary-menu styling tied to a 'div' or 'section' */
+div.secondary-menu, section.secondary-menu {
+  background-color: var(--color-secondary-background-light, gainsboro);
+  border: 1px solid var(--color-secondary-background-dark, grey);
   padding: 10px;
 }
-header a, footer a { color: whitesmoke; }
-header a:hover, footer a:hover { font-weight: bold; }
+
+/* - List Helpers - */
+
+/* lists without bullets and the default spacing */
+ul.inline-list, ol.inline-list { display: inline; padding-right: 5px;} 
+ul.no-bullet > li, ol.no-bullet > li { list-style:none !important; padding-left: 0em; }
+/* -- GENERIC STYLES that highlight core aspects of the page -- */
+
+/* site header and footer */
+header, footer { 
+  background-color: var(--color-primary-background, black); 
+  color: var(--color-primary-text, white);
+  text-align: center;
+  padding: 10px;
+}
+header a, footer a { color: var(--color-primary-text, whitesmoke); }
+header a:hover, footer a:hover { color: var(--color-primary-text-light, white); font-weight: bold; }
 
 /* site banner */
-div.banner { 
-  background-color: #eee; 
+div.banner { margin-bottom: 10px; }
+div.sub-footer { margin-top: 10px; }
+div.banner, div.sub-footer { 
+  background-color: var(--color-secondary-background, #eee); 
+  color: var(--color-secondary-text, black);
+  border: 1px solid var(--color-secondary-background-dark, darkgrey);
   text-align: center; 
   padding: 10px;
 }
@@ -181,55 +798,283 @@ main > section {
 article { padding-left: 15px; padding-right: 15px; }
 
 /* sidebar */
-.sidebar {
-  display: flex;
-}html {
-  /* colors */
+.sidebar { display: flex; }
 
-  /* padding */
+/* prevent a list from having bulleted styling */
+.secondary-menu > ul, ul.no-bullet { list-style: none; }
+.secondary-menu > ul li, .secondary-menu > ol li { margin-left: 5px; margin-right: 5px; }
+.secondary-menu > ul { 
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+}
+
+/* noscript disclaimer */
+noscript { margin: var(--padding-xlarge, 20px); }/* -- CSS VARIABLES: set accessible variables that are accessible (and able to be overwritten) within their scope -- */
+
+
+/* - colors (for branding) - */
+html {
+  /* primary background (black-ish) */
+  --color-primary-background: #2D2926;
+  --color-primary-background-light: rgb(74, 71, 70);
+  --color-primary-background-dark: black;
+  --color-primary-text: #e1e1e1;
+  --color-primary-text-light: white;
+
+  /* red accent background */
+  --color-accent-background: #CC0000;
+  --color-accent-text: #eee;
+  --color-accent-text-hover: #fff;
+
+  /* button/call to action (blue) */
+  --color-button-background: #257abe;
+  --color-button-background-dark: #1B598C;
+  --color-button-text: whitesmoke;
+
+  /* secondary background color (very light grey) */
+  --color-secondary-background: #eeeeee;
+  --color-secondary-background-light: #f5f5f5;
+  --color-secondary-background-dark: #C8C8C8;
+  --color-secondary-text: #333333;
+  --color-secondary-text-dark: black;
+}
+
+/* - padding: used throughout - */
+html {
   --padding-small: 5px;
   --padding-medium: 10px;
   --padding-large: 15px;
-}/* create a tabbed pane */
-.tabs {
+  --padding-xlarge: 20px;
+  --padding-xxlarge: 25px;
+}
+
+/* - hardcoded examples for the demonstration page - */
+
+/* demonstrating the variables working as normal, without any fallbacks */
+#var-ex-1 {
+  background-color: var(--color-accent-background); 
+  color: var(--color-accent-text);
+}
+
+/* demonstrating the fallbacks, if there's an error in scope or in misspelling */
+#var-ex-2 {
+  background-color: var(--color-acccent-background, darkgrey);
+  color: var(--color-acccent-text, black);
+}
+
+/* demonstrating variables can be overwritten, even with less specificity */
+#var-ex-3 {
+  background-color: var(--color-accent-background);
+  color: var(--color-accent-text);
+}
+
+.variable-override { --color-accent-background: green; }/* -- COMPONENTIZED CSS -- */
+
+/* - tabs.css: shout out to [kyusuf](https://github.com/KenanYusuf/) for his [tutorial](https://kyusuf.com/post/completely-css-tabs/) - */
+
+/* show/hide content based on currently selected input */
+div.tabs {
+  box-sizing: border-box;
+  display: flex; 
+  flex-wrap: wrap;
+  background-color: var(--color-secondary-background, gainsboro); 
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary-background-dark, #ccc);
+}
+
+/* hide radio buttons */
+div.tabs > input { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* tab header label */
+div.tabs > label { 
+  cursor: pointer;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 100%; 
+}
+div.tabs > input:focus + label, div.tabs > input + label:focus { text-decoration: underline; }
+div.tabs > input:hover + label, div.tabs > input + label:hover { background-color: var(--color-secondary-background-light, #ccc); }
+div.tabs > input:checked + label {
+  background-color: var(--color-secondary-background-light, #ccc);
+  font-weight: bold;
+}
+
+/* adjust border presence and radius for top/bottom tabs on small screens */
+div.tabs > input:checked + label {
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  border-left: none; border-right: none;
+}
+div.tabs > input + label:last-of-type { 
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input + label:first-of-type { 
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+}
+div.tabs > input:first-child:checked + label { 
+  border-top: none;
+  border-left: none;
+}
+
+/* respond to keyboard focus */
+div.tabs a:focus { font-weight: bold; text-decoration: underline; }
+
+
+/* tab content */
+div.tabs > div { 
+  padding: 10px;
+  border-top: 1px solid var(--color-secondary-background-dark, #ccc);
+  display: none; 
+  width: 100%;
+}
+div.tabs > div:last-of-type { 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+div.tabs > input:checked + label + div { 
+  background-color: var(--color-secondary-background-light, white) !important;
+  display: block; 
+}
+
+/* responsiveness (for large screens) */ 
+@media only screen and (min-width: 375px) {
   
-}/* helpers to make the styles show up better */
-#functional div { 
-  border: 1 solid black;
+  /* show the tab content body underneath the tab headers*/
+  div.tabs > div { 
+    order: 99; 
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  /* adjust tab labels to display horizontally */
+  div.tabs > label  { width: auto; }
+  div.tabs > input:checked + label {
+    border-left: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-right: 1px solid var(--color-secondary-background-dark, #ccc);
+    border-top: none;
+    border-bottom: none;
+  }
+  div.tabs > input + label:first-of-type { border-top-right-radius: 0px; }
+  div.tabs > input + label:last-of-type { 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px;
+  }
 }
-/* create a box to group similar content, often for purposes of filtering or navigation */
-.secondary-menu {
 
-}
-
-/* - LoCoSo: style LOcation,COntact,SOcial information for a footer - */
+/* - LOcation, COntact, SOcial (.locoso) styling - */
 
 /* layout and responsiveness */
-.locoso-left { flex: 1; }
-.locoso-wrapper { display: flex; }
+.locoso { 
+  display: flex; 
+  flex-wrap: wrap;
+  width: 100%; 
+  justify-content: space-around; }
+.locoso > div:first { flex: 1; }
+.locoso img {
+  height: 30px; width: 30px;
+}/* -- FUNCTIONAL CSS: does the same thing regardless of tag -- */
 
-/* list styles, */
-.locoso-left ul, .locoso-left ol { 
-  margin: 5px 0px; 
-  padding-left: 0; 
-  padding-bottom: 10px; 
+/* helpers to make the styles show up better */
+#functional div { border: 1px solid black; }
+
+/* add a basic border to anything */
+.bordered { border: 1px solid var(--color-secondary-background-dark, darkgrey); }
+
+/* text-alignment */
+.txtl { text-align: left; }
+.txtc { text-align: center; }
+.txtr { text-align: right; }
+
+/* display shortcuts */
+.flexw { display: flex; flex-wrap: wrap; }
+.full-width { width: 100%; }
+
+/* make text bigger */
+.large-text, .big-text { font-size: large; }
+.larger-text, .bigger-text { font-size: x-large; }
+
+/* padding examples */
+.pal { padding: 15px; }
+.pbm { padding-bottom: 10px; }
+.mls { margin-left: 5px; }
+
+/* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}/** -- OBJECT-ORIENTED CSS: styles/classes that are built for specific tags/situations -- */
+
+/* - buttons - */
+
+/* button styling (with css-variable usage) tied to an 'a' or 'button' tag */
+a.btn, button.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: var(--color-button-background-dark, blue);
+  color: var(--color-button-text, white);
+  border: 2px solid var(--color-button-text, white);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+a.btn:hover, button.btn:hover { 
+  background-color: var(--color-button-background-dark, darkblue);
+  cursor: pointer;
+}
+a.btn.btn-secondary, button.btn.btn-secondary { 
+  color: var(--color-button-background-dark, darkblue); 
+  background-color: var(--color-button-text, white);
+  border-color: var(--color-button-background-dark);
 }
 
-/* padding and margins */
-.prm { margin-right: 10px; padding-right: 10px; }
-.sm-icon { width: 30px; height: 30px; border: solid transparent 1px; }/* site header and footer */
-header, footer { 
-  color: white;
-  text-align: center;
-  background-color: black; 
+
+/* - Secondary Menu:  accentuates/groups a block of content - */
+
+/* .secondary-menu styling tied to a 'div' or 'section' */
+div.secondary-menu, section.secondary-menu {
+  background-color: var(--color-secondary-background-light, gainsboro);
+  border: 1px solid var(--color-secondary-background-dark, grey);
   padding: 10px;
 }
-header a, footer a { color: whitesmoke; }
-header a:hover, footer a:hover { font-weight: bold; }
+
+/* - List Helpers - */
+
+/* lists without bullets and the default spacing */
+ul.inline-list, ol.inline-list { display: inline; padding-right: 5px;} 
+ul.no-bullet > li, ol.no-bullet > li { list-style:none !important; padding-left: 0em; }
+/* -- GENERIC STYLES that highlight core aspects of the page -- */
+
+/* site header and footer */
+header, footer { 
+  background-color: var(--color-primary-background, black); 
+  color: var(--color-primary-text, white);
+  text-align: center;
+  padding: 10px;
+}
+header a, footer a { color: var(--color-primary-text, whitesmoke); }
+header a:hover, footer a:hover { color: var(--color-primary-text-light, white); font-weight: bold; }
 
 /* site banner */
-div.banner { 
-  background-color: #eee; 
+div.banner { margin-bottom: 10px; }
+div.sub-footer { margin-top: 10px; }
+div.banner, div.sub-footer { 
+  background-color: var(--color-secondary-background, #eee); 
+  color: var(--color-secondary-text, black);
+  border: 1px solid var(--color-secondary-background-dark, darkgrey);
   text-align: center; 
   padding: 10px;
 }
@@ -245,13 +1090,78 @@ main > section {
 article { padding-left: 15px; padding-right: 15px; }
 
 /* sidebar */
-.sidebar {
-  display: flex;
-}html {
-  /* colors */
+.sidebar { display: flex; }
 
-  /* padding */
+/* prevent a list from having bulleted styling */
+.secondary-menu > ul, ul.no-bullet { list-style: none; }
+.secondary-menu > ul li, .secondary-menu > ol li { margin-left: 5px; margin-right: 5px; }
+.secondary-menu > ul { 
+  display: flex;
+  text-align: center;
+  margin-left: auto;
+}
+
+/* noscript disclaimer */
+noscript { 
+  margin: var(--padding-xlarge, 20px); 
+  padding: var(--padding-medium, 10px); 
+}/* -- CSS VARIABLES: set accessible variables that are accessible (and able to be overwritten) within their scope -- */
+
+
+/* - colors (for branding) - */
+html {
+  /* primary background (black-ish) */
+  --color-primary-background: #2D2926;
+  --color-primary-background-light: rgb(74, 71, 70);
+  --color-primary-background-dark: black;
+  --color-primary-text: #e1e1e1;
+  --color-primary-text-light: white;
+
+  /* red accent background */
+  --color-accent-background: #CC0000;
+  --color-accent-text: #eee;
+  --color-accent-text-hover: #fff;
+
+  /* button/call to action (blue) */
+  --color-button-background: #257abe;
+  --color-button-background-dark: #1B598C;
+  --color-button-text: whitesmoke;
+
+  /* secondary background color (very light grey) */
+  --color-secondary-background: #eeeeee;
+  --color-secondary-background-light: #f5f5f5;
+  --color-secondary-background-dark: #C8C8C8;
+  --color-secondary-text: #333333;
+  --color-secondary-text-dark: black;
+}
+
+/* - padding: used throughout - */
+html {
   --padding-small: 5px;
   --padding-medium: 10px;
   --padding-large: 15px;
+  --padding-xlarge: 20px;
+  --padding-xxlarge: 25px;
 }
+
+/* - hardcoded examples for the demonstration page - */
+
+/* demonstrating the variables working as normal, without any fallbacks */
+#var-ex-1 {
+  background-color: var(--color-accent-background); 
+  color: var(--color-accent-text);
+}
+
+/* demonstrating the fallbacks, if there's an error in scope or in misspelling */
+#var-ex-2 {
+  background-color: var(--color-acccent-background, darkgrey);
+  color: var(--color-acccent-text, black);
+}
+
+/* demonstrating variables can be overwritten, even with less specificity */
+#var-ex-3 {
+  background-color: var(--color-accent-background);
+  color: var(--color-accent-text);
+}
+
+.variable-override { --color-accent-background: green; }

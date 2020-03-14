@@ -8,28 +8,52 @@
 
   <title>Code4Lib 2020 - Multi-Site Management</title>
   <link rel="icon" href="https://journal.code4lib.org/wp-content/themes/c4lj-theme/images/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./dist/bundle.css">
+  <style type="text/css">
+    body { --color-button-background-dark: var(--color-accent-background, red); }
+  </style>
 </head>
 
 <body>
-  <script type="module" src=""></script>
   <header>
     <h1>Multi-Site Management Workshop</h1>
   </header>
-  <div class="banner">A Modular Strategy for Creating (and Maintaining) Consistency Across Platforms</div>
+  <div class="banner bigger-text">A Modular Strategy for Creating (and Maintaining) Consistency Across Platforms</div>
   <main>
-    <section id="sidebar">
-      <ul>
+    <section class="secondary-menu">
+      <ul class="txtc flexw">
         <li><a class="btn" href="/index.html">home</a></li>
         <li><a class="btn" href="/css.html">css</a></li>
         <li><a class="btn" href="/js.html">js</a></li>
       </ul>
     </section>
-    <article style="text-align: center;">
-      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTEFVU1iY8Uz0EY1jAzwJaXuUNJwEGLpLTozAWOiPd-t_PBb6P7Z-NabxS5rr1u4yf0CLWmeJg3fDvk/embed" 
-        style="width: 100%;" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <article class="txtc">
+      <noscript>
+        <div class="bordered">
+          <span class="bigger-text">you have javascript turned off!</span>
+          <p>
+            if you're seeing this, it's because you have javascript turned off,
+            which doesn't mean much on this page, other than that you can't be tracked
+            by our google analytics. :p 
+          </p>
+
+          <p>
+            did you know the <code>iframe</code> below works without <code>javascript</code>? 
+            i was today years old when i learned that.
+          </p>
+
+          <p>the same cannot be said for our <a href="/js.html">javascript demo</a>, though.</p>
+        </div>
+      </noscript>
+      <label for="slides" class="sr-only">Google <a href="https://tinyurl.com/c4l-workshop-multisite">sheets</a> presentation available</label>
+      <iframe id="slides" class="full-width" height="300" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vTEFVU1iY8Uz0EY1jAzwJaXuUNJwEGLpLTozAWOiPd-t_PBb6P7Z-NabxS5rr1u4yf0CLWmeJg3fDvk/embed"></iframe>
     </article>
   </main>
+  <div class="sub-footer">
+    based off of <a href="https://github.com/bulib/bulib-wc">bulib-wc</a> by 
+    <a href="https://bu.edu/library">BU Libraries</a>
+  </div>
   <footer>Code4Lib 2020 - Aidan Sawyer - <a href="https://github.com/atla5">@atla5</a></footer>
 </body>
 

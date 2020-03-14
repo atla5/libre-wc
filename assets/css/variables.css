@@ -1,8 +1,60 @@
-html {
-  /* colors */
+/* -- CSS VARIABLES: set accessible variables that are accessible (and able to be overwritten) within their scope -- */
 
-  /* padding */
+
+/* - colors (for branding) - */
+html {
+  /* primary background (black-ish) */
+  --color-primary-background: #2D2926;
+  --color-primary-background-light: rgb(74, 71, 70);
+  --color-primary-background-dark: black;
+  --color-primary-text: #e1e1e1;
+  --color-primary-text-light: white;
+
+  /* red accent background */
+  --color-accent-background: #CC0000;
+  --color-accent-text: #eee;
+  --color-accent-text-hover: #fff;
+
+  /* button/call to action (blue) */
+  --color-button-background: #257abe;
+  --color-button-background-dark: #1B598C;
+  --color-button-text: whitesmoke;
+
+  /* secondary background color (very light grey) */
+  --color-secondary-background: #eeeeee;
+  --color-secondary-background-light: #f5f5f5;
+  --color-secondary-background-dark: #C8C8C8;
+  --color-secondary-text: #333333;
+  --color-secondary-text-dark: black;
+}
+
+/* - padding: used throughout - */
+html {
   --padding-small: 5px;
   --padding-medium: 10px;
   --padding-large: 15px;
+  --padding-xlarge: 20px;
+  --padding-xxlarge: 25px;
 }
+
+/* - hardcoded examples for the demonstration page - */
+
+/* demonstrating the variables working as normal, without any fallbacks */
+#var-ex-1 {
+  background-color: var(--color-accent-background); 
+  color: var(--color-accent-text);
+}
+
+/* demonstrating the fallbacks, if there's an error in scope or in misspelling */
+#var-ex-2 {
+  background-color: var(--color-acccent-background, darkgrey);
+  color: var(--color-acccent-text, black);
+}
+
+/* demonstrating variables can be overwritten, even with less specificity */
+#var-ex-3 {
+  background-color: var(--color-accent-background);
+  color: var(--color-accent-text);
+}
+
+.variable-override { --color-accent-background: green; }

@@ -1,4 +1,38 @@
+/* -- FUNCTIONAL CSS: does the same thing regardless of tag -- */
+
 /* helpers to make the styles show up better */
-#functional div { 
-  border: 1 solid black;
+#functional div { border: 1px solid black; }
+
+/* add a basic border to anything */
+.bordered { border: 1px solid var(--color-secondary-background-dark, darkgrey); }
+
+/* text-alignment */
+.txtl { text-align: left; }
+.txtc { text-align: center; }
+.txtr { text-align: right; }
+
+/* display shortcuts */
+.flexw { display: flex; flex-wrap: wrap; }
+.full-width { width: 100%; }
+
+/* make text bigger */
+.large-text, .big-text { font-size: large; }
+.larger-text, .bigger-text { font-size: x-large; }
+
+/* padding examples */
+.pal { padding: 15px; }
+.pbm { padding-bottom: 10px; }
+.mls { margin-left: 5px; }
+
+/* sr-only: 'accessibility' - used to optimize the page for screenreaders (code copied from [Orange-OpenSource](/web_EN/exemples/masquage/index.html) under CC BY SA 3.0)  */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
 }

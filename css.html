@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
   <link rel="stylesheet" type="text/css" href="./sites/site1.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/functional.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/component.css.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/component.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/oo.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/variables.css">
 </head>
@@ -23,7 +23,7 @@
   </header>
   <div class="banner">A Modular Strategy for Creating (and Maintaining) Consistency Across Platforms</div>
   <main>
-    <section id="sidebar">
+    <section id="sidebar" class="secondary-menu">
       <ul>
         <li><a class="btn" href="/">home</a></li>
         <li><a class="btn" href="/css.html">css</a></li>
@@ -31,24 +31,128 @@
       </ul>
     </section>
     <article>
+      <noscript>
+        <div class="bordered">
+          <p class="bigger-text">you have javascript turned off!</p>
+          <p><strong>no worries, though!</strong> almost everything on this page should still work!</p>
+        </div>
+      </noscript>
+
       <section id="functional">
         <h2>functional css</h2>
+        <p><em>functional (or 'atomic') css adds styles predictable to anything its added to, regardless of tag</em></p>
         
-      </section>
-      <section id="variables">
-        <h2>css-variables</h2>
+        <h3>Example: alignment</h3>
+        <div class="txtl">this text is left-aligned because of the <code>.txtl</code>.</div> 
+        <div class="txtc">this text is centered because of the <code>.txtc</code>.</div> 
+        <div class="txtr">this text is right-aligned because of the <code>.txtr</code>.</div> 
+
+        <h3>Example: text size</h3>
+        <div>
+          <p>this is regular-sized text (no classes)</p>
+          <p class="big-text">this is some <code>.big-text</code></p>
+          <p class="bigger-text">this is some <code>.bigger-text</code></p>
+        </div>
+
+        <h3>Example: padding</h3>
+        <div class="pal"><code>.pal</code> padding-all-large</div>
+        <div class="pbm"><code>.pbm</code> padding-bottom-medium</div>
+        <div class="mls"><code>.mls</code> margin-left-small</div>
 
       </section>
+      
       <section id="oo">
         <h2>object-oriented css</h2>
-
+        <p><em>object-oreited (or tag-specific css) adds styles with knowledge of what the tag is added to</em></p>
+        <div class="secondary-menu">
+          <h3>Example with <code>.secondary-menu</code> and <code>.btn</code></h3>
+          <p>Below are two elements (an anchor tag and a button) styled with <code>.btn</code> </p>
+          <a href="" class="btn">Primary (default) a.btn</a>
+          <button class="btn btn-secondary">Secondary button.btn.btn-secondary</button>
+        </div>
       </section>
+
       <section id="html+css">
         <h2>html+css elements</h2>
+        <p>
+          <em>
+            These styles/components will work with <code>javascript</code> turned off (try it)
+            but are very reliant upon a highly-specific <code>html</code> structure
+          </em>
+        </p>
 
+        <h3>Example: Tabbed pane using <code>div.tabs</code></h3>
+        <div class="tabs">
+          <input type="radio" name="tabs" id="option-1" checked>
+          <label for="option-1">Option One</label>
+          <div>the content within the first option</div>
+          <input type="radio" name="tabs" id="option-2">
+          <label for="option-2">Option Two</label>
+          <div>the content within the second option</div>
+          <input type="radio" name="tabs" id="option-3">
+          <label for="option-3">Option Three</label>
+          <div>the content within the third option</div>
+        </div>
+
+        <h3>Example: LOcation, COntact, SOcial information using <code>div.locoso</code></h3>
+        <div class="locoso bordered">
+            <div>
+              <h3 class="inline">Visit Us</h3>
+              <ol class="no-bullet" aria-label="address">
+                <li>BU Libraries</li>
+                <li>771 Commonwealth Avenue</li>
+                <li>Boston, MA 02215</li>
+                <li>
+                  <small>
+                    <a aria-label="Open library site" title="BU Libraries website" class="white-link" href="https://www.bu.edu/library">website</a>
+                    <a title="get directions" aria-label="Directions to the Library" target="_blank" class="white-link" href="https://google.com/maps/search/Boston%20University%20BU%20Libraries">directions »</a>
+                  </small>
+                </li>
+              </ol>
+            </div>
+            <div>
+              <h3 class="inline">Contact Us</h3>
+              <ul class="no-bullet" aria-label="contact-links">
+                <li>call <a class="white-link" href="tel:617-353-2700">617-353-2700</a></li>
+                <li>email <a class="white-link" href="mailto:ask@bu.edu">ask@bu.edu</a></li>
+                <li>text <a class="white-link" href="sms:617-431-2427">617-431-2427</a></li>
+              </ul>
+                
+              <h3>Follow Us</h3>
+              <ul aria-description="list of social media accounts" class="no-bullet flexw plm">
+                <li><a target="_blank" title="twitter" class="white-link" href="http://twitter.com/bulibraries">
+                  <img alt="twitter icon" class="sm-icon white-link" src="https://cdn.jsdelivr.net/npm/bulib-wc@latest/dist/icons/icons8-twitter-48.png"></a>
+                </li>
+                <li><a target="_blank" title="facebook" class="white-link" href="http://facebook.com/bostonulibraries">
+                  <img alt="facebook icon" class="sm-icon white-link" src="https://cdn.jsdelivr.net/npm/bulib-wc@latest/dist/icons/icons8-facebook-48.png"></a>
+                </li>
+                <li><a target="_blank" title="instagram" class="white-link" href="https://instagram.com/bulibraries">
+                  <img alt="instagram icon" class="sm-icon white-link" src="https://cdn.jsdelivr.net/npm/bulib-wc@latest/dist/icons/icons8-instagram-48.png"></a>
+                </li>
+              </ul>
+            </div>
+        </div>
       </section>
+
+      <section id="variables">
+        <h2>css-variables</h2>
+        <p id="var-ex-1" class="pal">this is an example using the <code>--color-accent</code> variables</p>
+        <p id="var-ex-2" class="pal variable-override">
+          this is an example where we've misspelled the <code>--color-acccent</code> variable and it defaults
+          to our fallback
+        </p>
+        <p id="var-ex-3" class="pal variable-override">
+          this is an example where the <code>--color-accent</code> variables are overwritten
+        </p>
+      </section>
+
+      <br />
     </article>
   </main>
+  <div class="sub-footer">
+    based off of <a href="https://github.com/bulib/bulib-wc">bulib-wc</a> by 
+    <a href="https://bu.edu/library">BU Libraries</a>
+  </div>
   <footer>Code4Lib 2020 - Aidan Sawyer - <a href="https://github.com/atla5">@atla5</a></footer>
 </body>
 

@@ -1,16 +1,22 @@
+/* -- GENERIC STYLES that highlight core aspects of the page -- */
+
 /* site header and footer */
 header, footer { 
-  color: white;
+  background-color: var(--color-primary-background, black); 
+  color: var(--color-primary-text, white);
   text-align: center;
-  background-color: black; 
   padding: 10px;
 }
-header a, footer a { color: whitesmoke; }
-header a:hover, footer a:hover { font-weight: bold; }
+header a, footer a { color: var(--color-primary-text, whitesmoke); }
+header a:hover, footer a:hover { color: var(--color-primary-text-light, white); font-weight: bold; }
 
 /* site banner */
-div.banner { 
-  background-color: #eee; 
+div.banner { margin-bottom: 10px; }
+div.sub-footer { margin-top: 10px; }
+div.banner, div.sub-footer { 
+  background-color: var(--color-secondary-background, #eee); 
+  color: var(--color-secondary-text, black);
+  border: 1px solid var(--color-secondary-background-dark, darkgrey);
   text-align: center; 
   padding: 10px;
 }
@@ -26,20 +32,19 @@ main > section {
 article { padding-left: 15px; padding-right: 15px; }
 
 /* sidebar */
-.sidebar {
+.sidebar { display: flex; }
+
+/* prevent a list from having bulleted styling */
+.secondary-menu > ul, ul.no-bullet { list-style: none; }
+.secondary-menu > ul li, .secondary-menu > ol li { margin-left: 5px; margin-right: 5px; }
+.secondary-menu > ul { 
   display: flex;
+  text-align: center;
+  margin-left: auto;
 }
 
-/* buttons */
-.btn {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px;
-  padding: 5px 10px;
-  background-color: #CC0000;
-  color: white;
-  border: 2px solid white;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+/* noscript disclaimer */
+noscript { 
+  margin: var(--padding-xlarge, 20px); 
+  padding: var(--padding-medium, 10px); 
 }
