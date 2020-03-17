@@ -38,8 +38,10 @@ $ npm install
 $ npm run start
 ```
 
-## Invitation
+## Invitation/How to Contact Me
 
 If you have any questions about what you see, please don't hesitate to contact me.
 
-You can do so in the 'Issues' tab of this repository, on the code4Lib
+You can do so in the ['Issues' tab](https://github.com/atla5/libre-wc/issues) of this repository, 
+  on the [code4Lib slack](https://code4lib.slack.com) as '@atla5', or the [polymer slack](https://polymer.slack.com)
+  as 'Aidan S'.
